@@ -3,8 +3,8 @@ import './App.css';
 
 import {
   BrowserRouter as Router,
-  Switch,
-  Route
+  Route,
+  Routes
 } from "react-router-dom";
 
 import NavBar from './components/NavBar.js';
@@ -25,24 +25,15 @@ function App() {
       <Grid container direction="column" style={{backgroundColor: "#ebebeb"}}>
         <Router basename={URL_PUBLIC}>
           <NavBar/>
-            <Switch>
-              <Route exact path="/">
-                <ItemListContainer/>
-              </Route>  
-              <Route exact path="/category/:categoryId">
-                <ItemListContainer/>
-              </Route>         
-              
-              <Route exact path="/products/:productoId">
-                <ItemDetailContainer/>
-              </Route>
-              <Route exact path="/cart">
-                <Cart/>
-              </Route>
-              <Route exact path="/formBuy">
-                <FormBuyContainer/>
-              </Route>
-            </Switch>
+            <Routes>
+              <Route path="/" element={<ItemListContainer/>} />
+              <Route path="/category/:categoryId" element={<ItemListContainer/>} />
+              <Route path="/products/:productoId" element={<ItemDetailContainer/>} />  
+              <Route path="/cart" element={<Cart/>} />
+              <Route path="/formBuy" element={<FormBuyContainer/>} />
+                
+
+            </Routes>
           <Footer/> 
         </Router>
       </Grid>
